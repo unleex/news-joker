@@ -1,0 +1,12 @@
+aiogram==3.20.0.post0
+environs==14.1.1
+gigachat
+pandas
+Pillow
+Requests
+telethon
+accelerate
+bitsandbytes
+transformers
+redis
+huggingsound
