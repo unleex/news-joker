@@ -91,7 +91,7 @@ async def make_joke(msg: Message,  state: FSMContext, censor=True, block_on_cens
     else:
         text = msg.text
     if text:
-        joke = await text_gen(msg.text, censor,block_on_censor=block_on_censor)
+        joke = await text_gen(text, censor,block_on_censor=block_on_censor)
         await msg.answer(joke)
         logger.info(f"""
 Generated joke from user: {msg.from_user.id}

@@ -20,7 +20,7 @@ async def main() -> None:
     dp.include_router(rating_handlers.rt)
     dp.include_router(news_handlers.rt)
     dp.update.middleware.register(middlewares.SaveChatIDMiddleware("db/database.json"))
-    dp.update.middleware.register(middlewares.Auth(PASSWORD, database, True))
+    dp.update.middleware.register(middlewares.Auth(PASSWORD, database, False))
     mirroring = asyncio.create_task(ria_mirroring_ugaralka.mainloop.mainloop(SMESHNYAVK_AI_ID, RIA_NOVOSTI, MIRRORING_TIMEOUT))
     print("starting")
     main_polling = asyncio.create_task(dp.start_polling(bot))

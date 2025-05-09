@@ -83,7 +83,7 @@ class Auth(BaseMiddleware):
     ) ->  typing.Any:
         userid = str(data['event_from_user'].id)
         db_user_data = self.db['users'][userid]
-        if hasattr(event, 'message') and event.message.text.startswith('/auth'):
+        if hasattr(event, 'message') and event.message.text is not None and event.message.text.startswith('/auth'):
             await auth(event.message)
             return
         if not self.enabled or ('password' in db_user_data and db_user_data['password'] == self.password):
