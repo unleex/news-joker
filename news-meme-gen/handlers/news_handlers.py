@@ -154,9 +154,9 @@ async def select_style(msg: Message, state: FSMContext):
 
 @rt.message(StateFilter(default_state))
 async def news_handler(msg: Message, state: FSMContext, do_rate=False):
-    censor = database['users'][str(msg.from_user.id)]
+    censor = database['users'][str(msg.from_user.id)]['censorship_on']
     await msg.answer(lexicon["text_preloader"])
-    result = await make_joke(msg=msg, state=state, censor=True, block_on_censor=True)
+    result = await make_joke(msg=msg, state=state, censor=censor, block_on_censor=True)
     if (msg.text or msg.voice) and do_rate:
         await rate(msg, topic=msg.text, joke=result, state=state, censor=censor)
 
